@@ -11,24 +11,24 @@ endif
 
 all:
 	@make clean
+	@make pdf
 	@make ref
 	@make pdf
 	@make clean
 
 pdf:
-	@${texsrc}dvips ${name}.dvi
-	@${gssrc}ps2pdf ${name}.ps
+	@${texsrc}pdflatex ${name}.tex
 
 ref:
-	@${texsrc}latex ${name}.tex
+#	@${texsrc}latex ${name}.tex
 #	@${texsrc}bibtex ${name}
 	@${texsrc}bibtex ${name}1
 #	@${texsrc}bibtex ${name}2
 #	@${texsrc}bibtex ${name}3
 #	@${texsrc}bibtex ${name}4
 #	@${texsrc}bibtex ${name}5
-	@${texsrc}latex ${name}.tex
-	@${texsrc}latex ${name}.tex
+#	@${texsrc}latex ${name}.tex
+#	@${texsrc}latex ${name}.tex
 
 clean:
 	@rm -fv ${name}*.tns
