@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+
+\usepackage{lastpage} % last page
+\usepackage{fancyhdr,etoolbox} % for header
+\usepackage{titlesec} % change section and subsection
+\usepackage[utf8]{inputenc} % accents
+\usepackage[T1]{fontenc}    % bonne césure
+%\usepackage[frenchb]{babel}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{cite}
+\usepackage[sectcntreset]{bibtopic}
+\usepackage[breaklinks,colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+
+
+%%% MARGING
+\oddsidemargin = 21pt %31pt
+\topmargin = 0pt %20pt
+\headheight = 12pt
+\headsep = 25pt
+\textheight = 592pt
+\textwidth = 430pt %390pt
+\marginparsep = 10pt
+\marginparwidth = 35pt
+\footskip = 30pt
+
+%%% HEADERS
+\pagestyle{fancy}
+\makeatletter
+\patchcmd{\@fancyhead}{\rlap}{\color{gray}\rlap}{}{}
+\patchcmd{\headrule}{\hrule}{\color{gray}\hrule}{}{}
+\patchcmd{\@fancyfoot}{\rlap}{\color{gray}\rlap}{}{}
+\patchcmd{\footrule}{\hrule}{\color{gray}\hrule}{}{}
+\makeatother
+
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\fancyhead{}
+\fancyfoot{}
+\lhead{Production}
+\chead{}
+\rhead{Roubin Emmanuel}
+\rfoot{}
+\cfoot{}
+\lfoot{Update: \today}
+%\cfoot{page \thepage\ sur {\hypersetup{linkcolor=gray}\pageref{LastPage}}}
+\rfoot{\thepage/\pageref*{LastPage}}
+
+%%% SECTION STYLES
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{Axe \Roman{subsection} : }
+\renewcommand{\thesubsubsection}{Étape \arabic{subsubsection} : }
+
+%\titleformat{⟨command⟩}[⟨shape⟩]{⟨format⟩}{⟨label⟩}{⟨sep⟩}{⟨before-code⟩}[⟨after-code⟩]
+
+\titleformat{\section}[block]{\scshape}{\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}[block]{\scshape}{\thesubsection}{0cm}{}[\titlerule]
+\titleformat{\subsubsection}[block]{\scshape}{\thesubsubsection}{0cm}{\vspace{-0.2cm}}
+
+\newcommand{\maintitle}[1]{\begin{center}\textsc{\Large #1}\par\vspace{0.5cm}\end{center}}
+
+\begin{document}
+\maintitle{Production}
+
+\nocite{*}
+
+\section*{Published}
+\begin{btSect}[bibperso/chrono]{bibperso/Published}
+  \btPrintAll
+\end{btSect}
+
+%\section*{In Review}
+%\begin{btSect}[chrono]{InReview}
+%  \btPrintAll
+%\end{btSect}
+
+\section*{Conference Proceedings}
+\begin{btSect}[bibperso/chrono]{bibperso/Proceeding}
+  \btPrintAll
+\end{btSect}
+
+\section*{Reports}
+\begin{btSect}[bibperso/chrono]{bibperso/Reports}
+  \btPrintAll
+\end{btSect}
+
+%\section*{In Wrinting}
+%\begin{btSect}[chrono]{InWriting}
+%  \btPrintAll
+%\end{btSect}
+
+\end{document}
